@@ -23,9 +23,21 @@ session_start();
             <li> <a href="index.php">HOME</a> </li>
             <li> <a href="#">ABOUT US</a> </li>
             <li> <a href="#">CONTACT</a> </li>
-            <li> <p style="font-size: 3rem;"> | </p> </li>       
+            <li> <p style="font-size: 3rem;"> | </p> </li> 
+            <li>
+                <p class="name">
+                    <?php 
+                    if(isset($_SESSION["auth"]) && $_SESSION["auth"] == true){ 
+                        echo htmlentities($_SESSION['uname']);
+                        echo " ";
+                        echo "<a href='includes/logout.inc.php' style='margin-left:2rem'> <img src='images/logout.png'>  </a>";
+                    }else {
+                    ?>
+                </p>
+            </li>      
             <li> <a href="login.php">LOGIN</a> </li>
             <li> <a href="signup.php">SIGN UP</a> </li>
+            <?php } ?>
            </ul>
         </nav>
     </header>
