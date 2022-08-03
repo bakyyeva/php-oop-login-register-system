@@ -24,7 +24,7 @@ session_start();
           <?php } ?> 
           </div>
           <div class="user-box"> 
-          <?php if(isset($_SESSION["uname"])){ ?>
+          <?php if(isset($_SESSION["email"])){ ?>
             <input type="email" name="email" value="<?= $_SESSION['email']; unset($_SESSION['email']); ?>" placeholder="Email" required>  
           <?php }else{ ?>   
             <input type="email" name="email" placeholder="Email" required>
