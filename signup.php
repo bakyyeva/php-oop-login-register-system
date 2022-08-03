@@ -17,8 +17,18 @@ session_start();
         <h2>Sign up</h2>
         <form action="includes/signup.inc.php" method="POST">
           <div class="user-box" style="margin-top: 25px;">
+          <?php if(isset($_SESSION["uname"])){ ?>
+            <input type="text" name="username" value="<?= $_SESSION['uname']; unset($_SESSION['uname']); ?>" placeholder="User name" required> 
+          <?php }else{ ?>
+            <input type="text" name="username" placeholder="User name" required> 
+          <?php } ?> 
           </div>
-          <div class="user-box">  
+          <div class="user-box"> 
+          <?php if(isset($_SESSION["uname"])){ ?>
+            <input type="email" name="email" value="<?= $_SESSION['email']; unset($_SESSION['email']); ?>" placeholder="Email" required>  
+          <?php }else{ ?>   
+            <input type="email" name="email" placeholder="Email" required>
+          <?php } ?>
           </div>
           <div class="user-box">
             <input type="password" name="pwd" placeholder="Password" required>
@@ -26,6 +36,14 @@ session_start();
           <div class="user-box">
             <input type="password" name="pwdRepeat" placeholder="Password(Repeat)" required>
           </div>
+          <?php
+             if(isset($_SESSION["error"])) {
+              echo "<p style='text-align: center; color: red; font-size: 1.6rem;'>";
+              echo $_SESSION["error"];
+              echo "</p>";
+             }
+             unset($_SESSION["error"]);
+          ?>
           <div class="login-row" style="margin-top: 40px;">
             <div class="login-left">
               <a href="login.php">Login</a>
